@@ -1,0 +1,37 @@
+name: "Compliance"
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+  workflow_call:
+
+permissions:
+  pull-requests: write
+
+jobs:
+  semantics:
+    name: Semantics
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: amannn/action-semantic-pull-request@v3.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  welcome:
+    name: Welcome
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: semantics
+    if: github.event.action == 'opened'
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          pr-message: |-
+            Congrats on making your first Pull Request and thanks for taking the time to improve Open Sauced! ❤️! 🎉🍕
+            Say hello by joining the conversation in our [Discord](https://discord.gg/U2peSNf23P)
