@@ -11,5 +11,5 @@ branding:
   color: 'yellow'
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/TMCB-SPACE/release:0.0.0'
+  image: 'docker://ghcr.io/tmcb-space/release:0.0.0'
 
