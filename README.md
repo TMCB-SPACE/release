@@ -22,7 +22,7 @@ This shareable configuration use the following plugins:
 - [`@semantic-release/changelog`](https://github.com/semantic-release/changelog)
 - [`conventional-changelog-conventionalcommits`](https://github.com/conventional-changelog/conventional-changelog)
 - [`@semantic-release/npm`](https://github.com/semantic-release/npm)
-- [`@google/semantic-release-replace-plugin`](https://github.com/google/semantic-release-replace-plugin)
+- [`semantic-release-replace-plugin`](https://github.com/jpoehnelt/semantic-release-replace-plugin)
 - [`@semantic-release/git`](https://github.com/semantic-release/git)
 - [`@semantic-release/github`](https://github.com/semantic-release/github)
 - [`@eclass/semantic-release-docker`](https://github.com/eclass/semantic-release-docker)

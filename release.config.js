@@ -122,7 +122,7 @@ addPlugin("@semantic-release/npm", {
 
 const actionExists = existsSync("./action.yml");
 if (actionExists) {
-  addPlugin("@google/semantic-release-replace-plugin", {
+  addPlugin("semantic-release-replace-plugin", {
     "replacements": [{
       "files": [
         "action.yml"
