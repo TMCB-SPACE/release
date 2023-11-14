@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.5](https://github.com/TMCB-SPACE/release/compare/v1.0.4...v1.0.5) (2023-11-14)
+
+
+### 🔥 Performance Improvements
+
+* update semantic release for peer package dependency ([6905b84](https://github.com/TMCB-SPACE/release/commit/6905b8419298cde3307c4e4d00112aa41c62456c))
+
 ## [1.0.4](https://github.com/TMCB-SPACE/release/compare/v1.0.3...v1.0.4) (2023-11-14)
 
 
