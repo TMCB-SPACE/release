@@ -13,24 +13,5 @@ permissions:
   pull-requests: write
 
 jobs:
-  semantics:
-    name: Semantics
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  welcome:
-    name: Welcome
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    needs: semantics
-    if: github.event.action == 'opened'
-    steps:
-      - uses: actions/first-interaction@v1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          pr-message: |-
-            Congrats on making your first Pull Request and thanks for taking the time to improve Theodore Morgan Consultation Bureau! ❤️🎉🍕
+  compliance:
+    uses: TMCB-SPACE/.github/.github/workflows/compliance.yml@main
