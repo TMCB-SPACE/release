@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.2](https://github.com/TMCB-SPACE/release/compare/v1.0.1...v1.0.2) (2023-11-14)
+
+
+### 🤖 Build System
+
+* update deprecated npm packages to latest versions ([d6ca516](https://github.com/TMCB-SPACE/release/commit/d6ca51653552de129a7fe10f663a5a6734b40e11))
+
 ## [1.0.1](https://github.com/TMCB-SPACE/release/compare/v1.0.0...v1.0.1) (2023-11-14)
 
 
