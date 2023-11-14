@@ -111,7 +111,7 @@ jobs:
           docker image ls -a
 
       - name: "🚀 release"
-        id: release
+        id: semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -122,8 +122,8 @@ jobs:
         run: |
           echo "RELEASE_TAG: ${{ env.RELEASE_TAG }}"
           echo "RELEASE_VERSION: ${{ env.RELEASE_VERSION }}"
-          echo "outputs.release-tag: ${{ steps.release.outputs.release-tag }}"
-          echo "outputs.release-version: ${{ steps.release.outputs.release-version }}"
+          echo "outputs.release-tag: ${{ steps.semantic-release.outputs.release-tag }}"
+          echo "outputs.release-version: ${{ steps.semantic-release.outputs.release-version }}"
 
   cleanup:
     name: Cleanup actions
