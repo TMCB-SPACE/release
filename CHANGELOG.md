@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.1](https://github.com/TMCB-SPACE/release/compare/v1.0.0...v1.0.1) (2023-11-14)
+
+
+### 🔁 Continuous Integration
+
+* use org level reusable workflows ([ed50aee](https://github.com/TMCB-SPACE/release/commit/ed50aee526797ea9166c27e8bdf4a5827b8c8992))
+
 ## 1.0.0 (2023-11-12)
 
 
