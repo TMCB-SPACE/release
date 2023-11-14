@@ -8,7 +8,22 @@ on:
       - beta
       - next
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  setup:
+    name: Set environment variables
+    runs-on: ubuntu-latest
+    outputs:
+      DEPLOY_ENVIRONMENT: ${{ steps.env.outputs.DEPLOY_ENVIRONMENT }}
+    steps:
+      - name: "☁️ compute environment variables"
+        id: env
+        run: |
+          echo "DEPLOY_ENVIRONMENT=$([[ ${{ github.ref_name }} == 'main' ]] && echo 'production' || echo ${{ github.ref_name }})" >> $GITHUB_OUTPUT
+
   test:
     name: Test and lint
     uses: ./.github/workflows/development.yml
@@ -57,10 +72,13 @@ jobs:
 
   release:
     environment:
-      name: production
-      url: https://github.com/${{ github.repository }}/releases/tag/${{ env.RELEASE_TAG }}
+      name: ${{ needs.setup.outputs.DEPLOY_ENVIRONMENT }}
+      url: https://github.com/${{ github.repository }}/releases/tag/${{ steps.semantic-release.outputs.release-tag }}
+    outputs:
+      release-tag: ${{ steps.semantic-release.outputs.release-tag }}
     name: Semantic release
     needs:
+      - setup
       - test
       - docker
     runs-on: ubuntu-latest
