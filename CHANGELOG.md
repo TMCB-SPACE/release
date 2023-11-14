@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.4](https://github.com/TMCB-SPACE/release/compare/v1.0.3...v1.0.4) (2023-11-14)
+
+
+### 🐛 Bug Fixes
+
+* correct release tag id ([d3b2844](https://github.com/TMCB-SPACE/release/commit/d3b2844a9ce544cd2a90bd914049e3f72d26a766))
+
 ## [1.0.3](https://github.com/TMCB-SPACE/release/compare/v1.0.2...v1.0.3) (2023-11-14)
 
 
