@@ -36,12 +36,12 @@
     "semantic-release-replace-plugin": "^1.2.7"
   },
   "devDependencies": {
-    "@open-sauced/check-engines": "^1.2.0",
-    "@open-sauced/conventional-commit": "^1.0.1"
+    "@open-sauced/conventional-commit": "^1.0.1",
+    "@tmcb/check-engines": "^1.0.0"
   },
   "scripts": {
-    "preinstall": "npx @open-sauced/check-engines",
-    "prestart": "npx @open-sauced/check-engines",
+    "preinstall": "npx @tmcb/check-engines",
+    "prestart": "npx @tmcb/check-engines",
     "push": "npx @open-sauced/conventional-commit"
   },
   "publishConfig": {
