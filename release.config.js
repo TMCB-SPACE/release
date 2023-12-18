@@ -46,8 +46,8 @@ const addPlugin = (plugin, options) => {
   return releaseConfig.plugins.push([plugin, options]);
 };
 
-!GIT_COMMITTER_NAME && (process.env.GIT_COMMITTER_NAME = "TMCB-SPACE");
-!GIT_COMMITTER_EMAIL && (process.env.GIT_COMMITTER_EMAIL = "141964641+TMCB-SPACE@users.noreply.github.com");
+!GIT_COMMITTER_NAME && (process.env.GIT_COMMITTER_NAME = "theodore-morgan[bot]");
+!GIT_COMMITTER_EMAIL && (process.env.GIT_COMMITTER_EMAIL = "154230537+theodore-morgan[bot]@users.noreply.github.com");
 
 try {
   const authorName = execSync(`git log -1 --pretty=format:%an ${GITHUB_SHA}`, { encoding: "utf8", stdio: "pipe" });
