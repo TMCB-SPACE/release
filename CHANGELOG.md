@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.6-beta.2](https://github.com/TMCB-SPACE/release/compare/v1.0.6-beta.1...v1.0.6-beta.2) (2023-12-18)
+
+
+### 🐛 Bug Fixes
+
+* correct ghcr docker based action tag detection and warn ([b34123f](https://github.com/TMCB-SPACE/release/commit/b34123f77d1d888949e7f980de3cfc2fc12733b0)), closes [#5](https://github.com/TMCB-SPACE/release/issues/5)
+
 ## [1.0.6-beta.1](https://github.com/TMCB-SPACE/release/compare/v1.0.5...v1.0.6-beta.1) (2023-12-18)
 
 
