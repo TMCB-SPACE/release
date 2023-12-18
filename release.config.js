@@ -46,8 +46,8 @@ const addPlugin = (plugin, options) => {
   return releaseConfig.plugins.push([plugin, options]);
 };
 
-!GIT_COMMITTER_NAME && (process.env.GIT_COMMITTER_NAME = "TMCB-SPACE");
-!GIT_COMMITTER_EMAIL && (process.env.GIT_COMMITTER_EMAIL = "141964641+TMCB-SPACE@users.noreply.github.com");
+!GIT_COMMITTER_NAME && (process.env.GIT_COMMITTER_NAME = "theodore-morgan[bot]");
+!GIT_COMMITTER_EMAIL && (process.env.GIT_COMMITTER_EMAIL = "154230537+theodore-morgan[bot]@users.noreply.github.com");
 
 try {
   const authorName = execSync(`git log -1 --pretty=format:%an ${GITHUB_SHA}`, { encoding: "utf8", stdio: "pipe" });
@@ -122,7 +122,18 @@ addPlugin("@semantic-release/npm", {
 
 const actionExists = existsSync("./action.yml");
 if (actionExists) {
-  addPlugin("semantic-release-replace-plugin", {
+  // regex the content of action.yml to replace the image tag
+  const actionYml = execSync(`cat action.yml`, { encoding: "utf8", stdio: "pipe" });
+  const re = new RegExp(`image:\\s'docker:\/\/ghcr.io\/${owner}\/${repo}:.*'`, "g");
+  const imageTag = actionYml.match(re);
+
+  if (!imageTag) {
+    log.warn(`Unable to find image tag in action.yml, no action will be published to the GitHub Container Registry`);
+    log.warn(`Please add the following to your action.yml file:`);
+    log.warn(`image: 'docker://ghcr.io/${owner}/${repo}:latest'`);
+  }
+
+  imageTag && addPlugin("semantic-release-replace-plugin", {
     "replacements": [{
       "files": [
         "action.yml"
