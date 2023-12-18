@@ -122,7 +122,18 @@ addPlugin("@semantic-release/npm", {
 
 const actionExists = existsSync("./action.yml");
 if (actionExists) {
-  addPlugin("semantic-release-replace-plugin", {
+  // regex the content of action.yml to replace the image tag
+  const actionYml = execSync(`cat action.yml`, { encoding: "utf8", stdio: "pipe" });
+  const re = new RegExp(`image:\\s'docker:\/\/ghcr.io\/${owner}\/${repo}:.*'`, "g");
+  const imageTag = actionYml.match(re);
+
+  if (!imageTag) {
+    log.warn(`Unable to find image tag in action.yml, no action will be published to the GitHub Container Registry`);
+    log.warn(`Please add the following to your action.yml file:`);
+    log.warn(`image: 'docker://ghcr.io/${owner}/${repo}:latest'`);
+  }
+
+  imageTag && addPlugin("semantic-release-replace-plugin", {
     "replacements": [{
       "files": [
         "action.yml"
