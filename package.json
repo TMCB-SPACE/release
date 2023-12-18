@@ -1,7 +1,7 @@
 {
   "name": "@tmcb/release",
   "description": "Node.js and docker github actions compatible semantic-release shareable config to publish to npmjs.com and ghcr.io",
-  "version": "1.0.5",
+  "version": "1.0.6-beta.1",
   "license": "MIT",
   "files": [
     "release.config.js"
