@@ -130,8 +130,8 @@ if (denoExists && !pkgExists) {
       "files": [
         "deno.json"
       ],
-      "from": `"version":\s?'.*'`,
-      "to": `"version": '\${nextRelease.version}'`,
+      "from": `"version":.*".*"`,
+      "to": `"version": "\${nextRelease.version}"`,
       "results": [{
         "file": "deno.json",
         "hasChanged": true,
