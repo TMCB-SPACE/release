@@ -5,6 +5,24 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.0](https://github.com/TMCB-SPACE/release/compare/v1.0.6...v1.1.0) (2025-02-02)
+
+### 🍕 Features
+
+* implement deno versioning using replace plugin ([57afa6c](https://github.com/TMCB-SPACE/release/commit/57afa6c84f3f23b357f84474b26d7f68e5510665))
+
+### 🐛 Bug Fixes
+
+* correct node version in workflow ([3a4ba17](https://github.com/TMCB-SPACE/release/commit/3a4ba17600bf04e2cef61e5a83771752aa3d980b))
+
+### 📝 Documentation
+
+* add deno banner ([0990f4b](https://github.com/TMCB-SPACE/release/commit/0990f4b99734c42d38617c95165c3f65457afaa1))
+
+### 🔁 Continuous Integration
+
+* correct workflow versions ([8a02cd5](https://github.com/TMCB-SPACE/release/commit/8a02cd51ba7624b4b12cb2f17b094f1cb67b3236))
+
 ## [1.1.0-beta.1](https://github.com/TMCB-SPACE/release/compare/v1.0.6...v1.1.0-beta.1) (2025-02-02)
 
 ### 🍕 Features
