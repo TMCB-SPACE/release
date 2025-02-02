@@ -5,6 +5,12 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.1](https://github.com/TMCB-SPACE/release/compare/v1.1.0...v1.1.1) (2025-02-02)
+
+### 🐛 Bug Fixes
+
+* correct deno.json inclusion ([30a17b1](https://github.com/TMCB-SPACE/release/commit/30a17b165e9a30acb2cb31a3af214d41e785e2c6))
+
 ## [1.1.0](https://github.com/TMCB-SPACE/release/compare/v1.0.6...v1.1.0) (2025-02-02)
 
 ### 🍕 Features
