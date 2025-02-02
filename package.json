@@ -1,7 +1,7 @@
 {
   "name": "@tmcb/release",
   "description": "Node.js and docker github actions compatible semantic-release shareable config to publish to npmjs.com and ghcr.io",
-  "version": "1.0.6",
+  "version": "1.1.0-beta.1",
   "license": "MIT",
   "files": [
     "release.config.js"
@@ -9,7 +9,7 @@
   "main": "release.config.js",
   "author": "TED Vortex <ted.vortex@gmail.com>",
   "engines": {
-    "node": ">=20",
+    "node": ">=22",
     "npm": ">=10"
   },
   "bugs": "https://github.com/TMCB-SPACE/release/issues",
@@ -18,25 +18,25 @@
     "url": "git+ssh://git@github.com/TMCB-SPACE/release.git"
   },
   "peerDependencies": {
-    "semantic-release": ">=22.0.7"
+    "semantic-release": ">=22.2.1"
   },
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^11.1.0",
-    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.0.2",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.2.3",
-    "@semantic-release/npm": "^11.0.1",
-    "@semantic-release/release-notes-generator": "^12.1.0",
-    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
     "eclass-docker-fork": "^1.3.1",
     "npmlog": "^7.0.1",
-    "semantic-release": ">=22.0.7",
+    "semantic-release": ">=24.2.1",
     "semantic-release-major-tag": "^0.3.2",
     "semantic-release-replace-plugin": "^1.2.7"
   },
   "devDependencies": {
-    "@tmcb/check-engines": "^1.0.0",
+    "@tmcb/check-engines": "^1.0.1",
     "@tmcb/conventional-commit": "^1.0.0"
   },
   "scripts": {
