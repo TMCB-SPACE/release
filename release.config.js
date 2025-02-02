@@ -116,9 +116,32 @@ addPlugin("@semantic-release/changelog", {
 > All notable changes to this project will be documented in this file`
 });
 
-addPlugin("@semantic-release/npm", {
-  "tarballDir": "pack"
-});
+const pkgExists = existsSync("./package.json");
+if (pkgExists) {
+  addPlugin("@semantic-release/npm", {
+    "tarballDir": "pack"
+  });
+}
+
+const denoExists = existsSync("./deno.json");
+if (denoExists && !pkgExists) {
+  addPlugin("semantic-release-replace-plugin", {
+    "replacements": [{
+      "files": [
+        "deno.json"
+      ],
+      "from": `"version":\s?'.*'`,
+      "to": `"version": '\${nextRelease.version}'`,
+      "results": [{
+        "file": "deno.json",
+        "hasChanged": true,
+        "numMatches": 1,
+        "numReplacements": 1
+      }],
+      "countMatches": true
+    }]
+  });
+}
 
 const actionExists = existsSync("./action.yml");
 if (actionExists) {
@@ -155,6 +178,8 @@ addPlugin("@semantic-release/git", {
   "assets": [
     "LICENSE*",
     "CHANGELOG.md",
+    "deno.json",
+    "deno.lock",
     "package.json",
     "package-lock.json",
     "npm-shrinkwrap.json",
