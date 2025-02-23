@@ -38,6 +38,11 @@ const {
   GIT_COMMITTER_EMAIL,
   GIT_AUTHOR_NAME,
   GIT_AUTHOR_EMAIL,
+  SR_DISABLE_CHANGELOG,
+  SR_DISABLE_NPM,
+  SR_DISABLE_DENO,
+  SR_DISABLE_ACTIONS,
+  SR_DISABLE_DOCKER,
 } = process.env;
 const [owner, repo] = String(GITHUB_REPOSITORY).toLowerCase().split("/");
 const addPlugin = (plugin, options) => {
@@ -107,7 +112,7 @@ addPlugin("@semantic-release/release-notes-generator", {
   }
 });
 
-addPlugin("@semantic-release/changelog", {
+SR_DISABLE_CHANGELOG === undefined && addPlugin("@semantic-release/changelog", {
   "changelogTitle": `# 📦 ${owner}/${repo} changelog
 
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -117,14 +122,14 @@ addPlugin("@semantic-release/changelog", {
 });
 
 const pkgExists = existsSync("./package.json");
-if (pkgExists) {
+if (pkgExists && SR_DISABLE_NPM === undefined) {
   addPlugin("@semantic-release/npm", {
     "tarballDir": "pack"
   });
 }
 
 const denoExists = existsSync("./deno.json");
-if (denoExists && !pkgExists) {
+if (denoExists && SR_DISABLE_DENO === undefined) {
   addPlugin("semantic-release-replace-plugin", {
     "replacements": [{
       "files": [
@@ -144,7 +149,7 @@ if (denoExists && !pkgExists) {
 }
 
 const actionExists = existsSync("./action.yml");
-if (actionExists) {
+if (actionExists && SR_DISABLE_ACTIONS === undefined) {
   // regex the content of action.yml to replace the image tag
   const actionYml = execSync(`cat action.yml`, { encoding: "utf8", stdio: "pipe" });
   const re = new RegExp(`image:\\s'docker:\/\/ghcr.io\/${owner}\/${repo}:.*'`, "g");
@@ -202,7 +207,7 @@ addPlugin("@semantic-release/github", {
 });
 
 const dockerExists = existsSync("./Dockerfile");
-if (dockerExists) {
+if (dockerExists && SR_DISABLE_DOCKER === undefined) {
   addPlugin("eclass-docker-fork", {
     "baseImageName": `${owner}/${repo}`,
     "registries": [
