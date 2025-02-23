@@ -5,6 +5,12 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.2.0](https://github.com/TMCB-SPACE/release/compare/v1.1.1...v1.2.0) (2025-02-23)
+
+### 🍕 Features
+
+* add disable environment variables ([0665fbb](https://github.com/TMCB-SPACE/release/commit/0665fbbe4ce3952f37694e914dadb6a411975609))
+
 ## [1.1.1](https://github.com/TMCB-SPACE/release/compare/v1.1.0...v1.1.1) (2025-02-02)
 
 ### 🐛 Bug Fixes
