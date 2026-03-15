@@ -5,6 +5,12 @@
 
 > All notable changes to this project will be documented in this file
 
+## [2.0.1](https://github.com/TMCB-SPACE/release/compare/v2.0.0...v2.0.1) (2026-03-15)
+
+### 🐛 Bug Fixes
+
+* correct docker build node version ([7c64cf2](https://github.com/TMCB-SPACE/release/commit/7c64cf2c713bcac2fd075fd2d4765ee8b5b07252))
+
 ## [2.0.0](https://github.com/TMCB-SPACE/release/compare/v1.2.0...v2.0.0) (2026-03-15)
 
 ### ⚠ BREAKING CHANGES
