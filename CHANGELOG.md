@@ -5,6 +5,38 @@
 
 > All notable changes to this project will be documented in this file
 
+## [2.0.0-beta.1](https://github.com/TMCB-SPACE/release/compare/v1.2.0...v2.0.0-beta.1) (2026-03-15)
+
+### ⚠ BREAKING CHANGES
+
+* node version updated to 24
+
+### 🍕 Features
+
+* update license and retroactive node version bump ([98a45be](https://github.com/TMCB-SPACE/release/commit/98a45befeebd17b7c6339406563402b160ee1324))
+
+### 🐛 Bug Fixes
+
+* correct package lock on semantic release typescript changes ([db22488](https://github.com/TMCB-SPACE/release/commit/db22488e520ac3e37fd1076f67359682a48b8a1f))
+* use trusted publishing for npm publish ([8a064b7](https://github.com/TMCB-SPACE/release/commit/8a064b7a7254298aed44f26407026068d72943b6))
+
+### ✅ Tests
+
+* disable bahmutov action ([d288d5b](https://github.com/TMCB-SPACE/release/commit/d288d5b79b9cfffa2f51ef0b831f0fa8b3bd2d87))
+* test cross repo workflow changes ([c7e2e14](https://github.com/TMCB-SPACE/release/commit/c7e2e14364af7611f861b7690c192a3911f6eee0))
+* test github workspace ([bd63b72](https://github.com/TMCB-SPACE/release/commit/bd63b72e9fa5ed4bcbac132c8b305461956b49c7))
+
+### 🤖 Build System
+
+* attempt to correct build ([1674f11](https://github.com/TMCB-SPACE/release/commit/1674f1118677fa4bbe98d1b47462e7ac7c1a077b))
+* update deps and add safe reverts ([c86a877](https://github.com/TMCB-SPACE/release/commit/c86a87758efa248bcfaf2684196fdd4946bb9922))
+
+### 🔁 Continuous Integration
+
+* correct ghcr permission issues ([97a3129](https://github.com/TMCB-SPACE/release/commit/97a31295b755fc8d4559b6c622c665bb22ff10f4))
+* update action versions ([6a15657](https://github.com/TMCB-SPACE/release/commit/6a156579169d21078d340d2a7862a39a9030d441))
+* update node version ([937009b](https://github.com/TMCB-SPACE/release/commit/937009be251fec389b62f56c670863c24b316fcd))
+
 ## [1.2.0](https://github.com/TMCB-SPACE/release/compare/v1.1.1...v1.2.0) (2025-02-23)
 
 ### 🍕 Features
@@ -16,6 +48,35 @@
 ### 🐛 Bug Fixes
 
 * correct deno.json inclusion ([30a17b1](https://github.com/TMCB-SPACE/release/commit/30a17b165e9a30acb2cb31a3af214d41e785e2c6))
+
+## [1.1.1-beta.2](https://github.com/TMCB-SPACE/release/compare/v1.1.1-beta.1...v1.1.1-beta.2) (2026-03-15)
+
+### 🔁 Continuous Integration
+
+* correct ghcr permission issues ([97a3129](https://github.com/TMCB-SPACE/release/commit/97a31295b755fc8d4559b6c622c665bb22ff10f4))
+
+## [1.1.1-beta.1](https://github.com/TMCB-SPACE/release/compare/v1.1.0...v1.1.1-beta.1) (2026-03-15)
+
+### 🐛 Bug Fixes
+
+* correct package lock on semantic release typescript changes ([db22488](https://github.com/TMCB-SPACE/release/commit/db22488e520ac3e37fd1076f67359682a48b8a1f))
+* use trusted publishing for npm publish ([8a064b7](https://github.com/TMCB-SPACE/release/commit/8a064b7a7254298aed44f26407026068d72943b6))
+
+### ✅ Tests
+
+* disable bahmutov action ([d288d5b](https://github.com/TMCB-SPACE/release/commit/d288d5b79b9cfffa2f51ef0b831f0fa8b3bd2d87))
+* test cross repo workflow changes ([c7e2e14](https://github.com/TMCB-SPACE/release/commit/c7e2e14364af7611f861b7690c192a3911f6eee0))
+* test github workspace ([bd63b72](https://github.com/TMCB-SPACE/release/commit/bd63b72e9fa5ed4bcbac132c8b305461956b49c7))
+
+### 🤖 Build System
+
+* attempt to correct build ([1674f11](https://github.com/TMCB-SPACE/release/commit/1674f1118677fa4bbe98d1b47462e7ac7c1a077b))
+* update deps and add safe reverts ([c86a877](https://github.com/TMCB-SPACE/release/commit/c86a87758efa248bcfaf2684196fdd4946bb9922))
+
+### 🔁 Continuous Integration
+
+* update action versions ([6a15657](https://github.com/TMCB-SPACE/release/commit/6a156579169d21078d340d2a7862a39a9030d441))
+* update node version ([937009b](https://github.com/TMCB-SPACE/release/commit/937009be251fec389b62f56c670863c24b316fcd))
 
 ## [1.1.0](https://github.com/TMCB-SPACE/release/compare/v1.0.6...v1.1.0) (2025-02-02)
 

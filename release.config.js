@@ -33,6 +33,7 @@ const noteKeywords = [
 ];
 const {
   GITHUB_SHA,
+  GITHUB_ACTIONS,
   GITHUB_REPOSITORY,
   GIT_COMMITTER_NAME,
   GIT_COMMITTER_EMAIL,
@@ -42,7 +43,9 @@ const {
   SR_DISABLE_NPM,
   SR_DISABLE_DENO,
   SR_DISABLE_ACTIONS,
+  SR_DISABLE_CHROME,
   SR_DISABLE_DOCKER,
+  SR_DISABLE_PYTHON,
 } = process.env;
 const [owner, repo] = String(GITHUB_REPOSITORY).toLowerCase().split("/");
 const addPlugin = (plugin, options) => {
@@ -148,6 +151,26 @@ if (denoExists && SR_DISABLE_DENO === undefined) {
   });
 }
 
+const pythonExists = existsSync("./pyproject.toml");
+if (pythonExists && SR_DISABLE_PYTHON === undefined) {
+  addPlugin("semantic-release-replace-plugin", {
+    "replacements": [{
+      "files": [
+        "pyproject.toml"
+      ],
+      "from": `version.*=.*".*"`,
+      "to": `version = "\${nextRelease.version}"`,
+      "results": [{
+        "file": "pyproject.toml",
+        "hasChanged": true,
+        "numMatches": 1,
+        "numReplacements": 1
+      }],
+      "countMatches": true
+    }]
+  });
+}
+
 const actionExists = existsSync("./action.yml");
 if (actionExists && SR_DISABLE_ACTIONS === undefined) {
   // regex the content of action.yml to replace the image tag
@@ -179,6 +202,26 @@ if (actionExists && SR_DISABLE_ACTIONS === undefined) {
   });
 }
 
+const manifestExists = existsSync("./manifest.json");
+if (manifestExists && SR_DISABLE_CHROME === undefined) {
+  addPlugin("@google/semantic-release-replace-plugin", {
+    "replacements": [{
+      "files": [
+        "manifest.json"
+      ],
+      "from": `"version": ".*"`,
+      "to": `"version": "\${nextRelease.version}"`,
+      "results": [{
+        "file": "manifest.json",
+        "hasChanged": true,
+        "numMatches": 1,
+        "numReplacements": 1
+      }],
+      "countMatches": true
+    }]
+  });
+}
+
 addPlugin("@semantic-release/git", {
   "assets": [
     "LICENSE*",
@@ -191,7 +234,10 @@ addPlugin("@semantic-release/git", {
     "yarn.lock",
     "pnpm-lock.yaml",
     "public/**/*",
-    "action.yml"
+    "action.yml",
+    "manifest.json",
+    "pyproject.toml",
+    "uv.lock"
   ],
   "message": `chore(<%= nextRelease.type %>): release <%= nextRelease.version %> <%= nextRelease.channel !== null ? \`on \${nextRelease.channel} channel \` : '' %>[skip ci]\n\n<%= nextRelease.notes %>`
 });
@@ -223,7 +269,7 @@ if (dockerExists && SR_DISABLE_DOCKER === undefined) {
 
 addPlugin("semantic-release-major-tag");
 
-if (process.env.GITHUB_ACTIONS !== undefined) {
+if (GITHUB_ACTIONS !== undefined) {
   addPlugin("@semantic-release/exec", {
     successCmd: `echo 'RELEASE_TAG=v\${nextRelease.version}' >> $GITHUB_ENV
 echo 'RELEASE_VERSION=\${nextRelease.version}' >> $GITHUB_ENV
