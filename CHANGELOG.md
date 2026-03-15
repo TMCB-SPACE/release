@@ -5,6 +5,12 @@
 
 > All notable changes to this project will be documented in this file
 
+## [2.0.2](https://github.com/TMCB-SPACE/release/compare/v2.0.1...v2.0.2) (2026-03-15)
+
+### 🐛 Bug Fixes
+
+* correct python project toml mismatch ([838718d](https://github.com/TMCB-SPACE/release/commit/838718dd368195073750979bc84eb106c8d46fee))
+
 ## [2.0.1](https://github.com/TMCB-SPACE/release/compare/v2.0.0...v2.0.1) (2026-03-15)
 
 ### 🐛 Bug Fixes
