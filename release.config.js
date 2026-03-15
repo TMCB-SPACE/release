@@ -33,11 +33,18 @@ const noteKeywords = [
 ];
 const {
   GITHUB_SHA,
+  GITHUB_ACTIONS,
   GITHUB_REPOSITORY,
   GIT_COMMITTER_NAME,
   GIT_COMMITTER_EMAIL,
   GIT_AUTHOR_NAME,
   GIT_AUTHOR_EMAIL,
+  SR_DISABLE_CHANGELOG,
+  SR_DISABLE_NPM,
+  SR_DISABLE_ACTIONS,
+  SR_DISABLE_CHROME,
+  SR_DISABLE_DOCKER,
+  SR_DISABLE_PYTHON,
 } = process.env;
 const [owner, repo] = String(GITHUB_REPOSITORY).toLowerCase().split("/");
 const addPlugin = (plugin, options) => {
@@ -107,7 +114,7 @@ addPlugin("@semantic-release/release-notes-generator", {
   }
 });
 
-addPlugin("@semantic-release/changelog", {
+SR_DISABLE_CHANGELOG === undefined && addPlugin("@semantic-release/changelog", {
   "changelogTitle": `# 📦 ${owner}/${repo} changelog
 
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -117,14 +124,14 @@ addPlugin("@semantic-release/changelog", {
 });
 
 const pkgExists = existsSync("./package.json");
-if (pkgExists) {
+if (pkgExists && SR_DISABLE_NPM === undefined) {
   addPlugin("@semantic-release/npm", {
     "tarballDir": "pack"
   });
 }
 
 const denoExists = existsSync("./deno.json");
-if (denoExists && !pkgExists) {
+if (denoExists && SR_DISABLE_NPM === undefined) {
   addPlugin("semantic-release-replace-plugin", {
     "replacements": [{
       "files": [
@@ -143,8 +150,28 @@ if (denoExists && !pkgExists) {
   });
 }
 
+const pythonExists = existsSync("./pyproject.toml");
+if (pythonExists && SR_DISABLE_PYTHON === undefined) {
+  addPlugin("semantic-release-replace-plugin", {
+    "replacements": [{
+      "files": [
+        "pyproject.toml"
+      ],
+      "from": `version.*=.*".*"`,
+      "to": `version = "\${nextRelease.version}"`,
+      "results": [{
+        "file": "pyproject.toml",
+        "hasChanged": true,
+        "numMatches": 1,
+        "numReplacements": 1
+      }],
+      "countMatches": true
+    }]
+  });
+}
+
 const actionExists = existsSync("./action.yml");
-if (actionExists) {
+if (actionExists  && SR_DISABLE_ACTIONS === undefined) {
   // regex the content of action.yml to replace the image tag
   const actionYml = execSync(`cat action.yml`, { encoding: "utf8", stdio: "pipe" });
   const re = new RegExp(`image:\\s'docker:\/\/ghcr.io\/${owner}\/${repo}:.*'`, "g");
@@ -174,6 +201,26 @@ if (actionExists) {
   });
 }
 
+const manifestExists = existsSync("./manifest.json");
+if (manifestExists && SR_DISABLE_CHROME === undefined) {
+  addPlugin("@google/semantic-release-replace-plugin", {
+    "replacements": [{
+      "files": [
+        "manifest.json"
+      ],
+      "from": `"version": ".*"`,
+      "to": `"version": "\${nextRelease.version}"`,
+      "results": [{
+        "file": "manifest.json",
+        "hasChanged": true,
+        "numMatches": 1,
+        "numReplacements": 1
+      }],
+      "countMatches": true
+    }]
+  });
+}
+
 addPlugin("@semantic-release/git", {
   "assets": [
     "LICENSE*",
@@ -186,7 +233,10 @@ addPlugin("@semantic-release/git", {
     "yarn.lock",
     "pnpm-lock.yaml",
     "public/**/*",
-    "action.yml"
+    "action.yml",
+    "manifest.json",
+    "pyproject.toml",
+    "uv.lock"
   ],
   "message": `chore(<%= nextRelease.type %>): release <%= nextRelease.version %> <%= nextRelease.channel !== null ? \`on \${nextRelease.channel} channel \` : '' %>[skip ci]\n\n<%= nextRelease.notes %>`
 });
@@ -202,7 +252,7 @@ addPlugin("@semantic-release/github", {
 });
 
 const dockerExists = existsSync("./Dockerfile");
-if (dockerExists) {
+if (dockerExists && SR_DISABLE_DOCKER === undefined) {
   addPlugin("eclass-docker-fork", {
     "baseImageName": `${owner}/${repo}`,
     "registries": [
@@ -218,7 +268,7 @@ if (dockerExists) {
 
 addPlugin("semantic-release-major-tag");
 
-if (process.env.GITHUB_ACTIONS !== undefined) {
+if (GITHUB_ACTIONS !== undefined) {
   addPlugin("@semantic-release/exec", {
     successCmd: `echo 'RELEASE_TAG=v\${nextRelease.version}' >> $GITHUB_ENV
 echo 'RELEASE_VERSION=\${nextRelease.version}' >> $GITHUB_ENV

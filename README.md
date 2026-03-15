@@ -81,7 +81,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "☁️ checkout repository"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -208,6 +208,17 @@ If you decide to fix a bug, make sure to use the conventional commit available a
 ```shell
 npm run push
 ```
+
+### Disabling auto-detect features
+
+You can use these environment variables to deny execution of any part of the auto-detect features:
+
+- `SR_DISABLE_CHANGELOG`
+- `SR_DISABLE_NPM`
+- `SR_DISABLE_ACTIONS`
+- `SR_DISABLE_CHROME`
+- `SR_DISABLE_DOCKER`
+- `SR_DISABLE_PYTHON`
 
 ## ⚖️ LICENSE
 
