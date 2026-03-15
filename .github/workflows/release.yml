@@ -76,6 +76,8 @@ jobs:
       url: https://github.com/${{ github.repository }}/releases/tag/${{ steps.semantic-release.outputs.release-tag }}
     permissions:
       contents: write
+      packages: write
+      attestations: write
       issues: write
       pull-requests: write
       id-token: write
