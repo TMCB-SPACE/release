@@ -9,51 +9,6 @@ on:
       - reopened
   workflow_call:
 
-#jobs:
-#  development:
-#    uses: TMCB-SPACE/.github/.github/workflows/development.yml@main
-
 jobs:
-  test:
-    name: Test application
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: "☁️ checkout repository"
-        uses: actions/checkout@v6
-
-      - name: "🔧 setup node"
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-
-      - name: "🔧 install npm@latest"
-        run: npm i -g npm@latest
-
-      - name: "📦 install dependencies"
-        run: npm ci
-
-      - name: "🔍 run tests"
-        run: npm run test --if-present
-
-  lint:
-    name: Code standards
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: "☁️ checkout repository"
-        uses: actions/checkout@v6
-
-      - name: "🔧 setup node"
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-
-      - name: "🔧 install npm@latest"
-        run: npm i -g npm@latest
-
-      - name: "📦 install dependencies"
-        uses: bahmutov/npm-install@v1
-
-      - name: "🔍 lint code"
-        run: npm run lint --if-present
+  development:
+    uses: TMCB-SPACE/.github/.github/workflows/development.yml@main
