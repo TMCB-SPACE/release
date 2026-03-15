@@ -5,6 +5,12 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.1-beta.2](https://github.com/TMCB-SPACE/release/compare/v1.1.1-beta.1...v1.1.1-beta.2) (2026-03-15)
+
+### 🔁 Continuous Integration
+
+* correct ghcr permission issues ([97a3129](https://github.com/TMCB-SPACE/release/commit/97a31295b755fc8d4559b6c622c665bb22ff10f4))
+
 ## [1.1.1-beta.1](https://github.com/TMCB-SPACE/release/compare/v1.1.0...v1.1.1-beta.1) (2026-03-15)
 
 ### 🐛 Bug Fixes
