@@ -41,6 +41,7 @@ const {
   GIT_AUTHOR_EMAIL,
   SR_DISABLE_CHANGELOG,
   SR_DISABLE_NPM,
+  SR_DISABLE_DENO,
   SR_DISABLE_ACTIONS,
   SR_DISABLE_CHROME,
   SR_DISABLE_DOCKER,
@@ -131,14 +132,14 @@ if (pkgExists && SR_DISABLE_NPM === undefined) {
 }
 
 const denoExists = existsSync("./deno.json");
-if (denoExists && SR_DISABLE_NPM === undefined) {
+if (denoExists && SR_DISABLE_DENO === undefined) {
   addPlugin("semantic-release-replace-plugin", {
     "replacements": [{
       "files": [
         "deno.json"
       ],
-      "from": `"version":\s?'.*'`,
-      "to": `"version": '\${nextRelease.version}'`,
+      "from": `"version":.*".*"`,
+      "to": `"version": "\${nextRelease.version}"`,
       "results": [{
         "file": "deno.json",
         "hasChanged": true,
@@ -171,7 +172,7 @@ if (pythonExists && SR_DISABLE_PYTHON === undefined) {
 }
 
 const actionExists = existsSync("./action.yml");
-if (actionExists  && SR_DISABLE_ACTIONS === undefined) {
+if (actionExists && SR_DISABLE_ACTIONS === undefined) {
   // regex the content of action.yml to replace the image tag
   const actionYml = execSync(`cat action.yml`, { encoding: "utf8", stdio: "pipe" });
   const re = new RegExp(`image:\\s'docker:\/\/ghcr.io\/${owner}\/${repo}:.*'`, "g");

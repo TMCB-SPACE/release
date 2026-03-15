@@ -201,6 +201,16 @@ Feel free to change any of the above to whatever suits your purpose, our motivat
 
 We are actively investigating ways to drop the 2 remaining variables as well!
 
+## 🚧 Disabling auto-detect features
+
+You can use these environment variables to deny execution of any part of the auto-detect features:
+
+- `SR_DISABLE_CHANGELOG`
+- `SR_DISABLE_NPM`
+- `SR_DISABLE_DENO`
+- `SR_DISABLE_ACTIONS`
+- `SR_DISABLE_DOCKER`
+
 ## 🤝 Contributing
 
 If you decide to fix a bug, make sure to use the conventional commit available at:
