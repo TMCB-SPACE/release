@@ -74,6 +74,11 @@ jobs:
     environment:
       name: ${{ needs.setup.outputs.DEPLOY_ENVIRONMENT }}
       url: https://github.com/${{ github.repository }}/releases/tag/${{ steps.semantic-release.outputs.release-tag }}
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
     outputs:
       release-tag: ${{ steps.semantic-release.outputs.release-tag }}
     name: Semantic release
@@ -114,7 +119,6 @@ jobs:
         id: semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npx semantic-release
 
