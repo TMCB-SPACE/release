@@ -7,7 +7,7 @@
 
 > now available as a [GitHub Marketplace action](https://github.com/marketplace/actions/tmcb-space-release)
 
-> works with deno
+> works with node and deno
 
 [![Commits](https://img.shields.io/github/commit-activity/w/TMCB-SPACE/release?style=flat)](https://github.com/TMCB-SPACE/release/pulse)
 [![Issues](https://img.shields.io/github/issues/TMCB-SPACE/release.svg?style=flat)](https://github.com/TMCB-SPACE/release/issues)
