@@ -5,6 +5,30 @@
 
 > All notable changes to this project will be documented in this file
 
+## [2.0.4](https://github.com/TMCB-SPACE/release/compare/v2.0.3...v2.0.4) (2026-11-12)
+
+### 🐛 Bug Fixes
+
+* **deps:** update semantic-release and its plugins ([#11](https://github.com/TMCB-SPACE/release/issues/11)) ([4738c06](https://github.com/TMCB-SPACE/release/commit/4738c0676b87736666426c184b059349cf95f38a))
+
+## [2.0.3](https://github.com/TMCB-SPACE/release/compare/v2.0.2...v2.0.3) (2026-11-12)
+
+### 🐛 Bug Fixes
+
+* **deps:** bump eclass-docker-fork to 1.4.0 ([#10](https://github.com/TMCB-SPACE/release/issues/10)) ([8c18698](https://github.com/TMCB-SPACE/release/commit/8c1869830b1a9e1b548df98407d257a3cb5ad200))
+
+## [2.0.2](https://github.com/TMCB-SPACE/release/compare/v2.0.1...v2.0.2) (2026-03-15)
+
+### 🐛 Bug Fixes
+
+* correct python project toml mismatch ([838718d](https://github.com/TMCB-SPACE/release/commit/838718dd368195073750979bc84eb106c8d46fee))
+
+## [2.0.1](https://github.com/TMCB-SPACE/release/compare/v2.0.0...v2.0.1) (2026-03-15)
+
+### 🐛 Bug Fixes
+
+* correct docker build node version ([7c64cf2](https://github.com/TMCB-SPACE/release/commit/7c64cf2c713bcac2fd075fd2d4765ee8b5b07252))
+
 ## [2.0.0](https://github.com/TMCB-SPACE/release/compare/v1.2.0...v2.0.0) (2026-03-15)
 
 ### ⚠ BREAKING CHANGES

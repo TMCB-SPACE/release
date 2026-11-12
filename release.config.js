@@ -158,7 +158,7 @@ if (pythonExists && SR_DISABLE_PYTHON === undefined) {
       "files": [
         "pyproject.toml"
       ],
-      "from": `version.*=.*".*"`,
+      "from": `^version.*=.*".*"$`,
       "to": `version = "\${nextRelease.version}"`,
       "results": [{
         "file": "pyproject.toml",
