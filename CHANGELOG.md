@@ -5,6 +5,12 @@
 
 > All notable changes to this project will be documented in this file
 
+## [2.0.4](https://github.com/TMCB-SPACE/release/compare/v2.0.3...v2.0.4) (2026-11-12)
+
+### 🐛 Bug Fixes
+
+* **deps:** update semantic-release and its plugins ([#11](https://github.com/TMCB-SPACE/release/issues/11)) ([4738c06](https://github.com/TMCB-SPACE/release/commit/4738c0676b87736666426c184b059349cf95f38a))
+
 ## [2.0.3](https://github.com/TMCB-SPACE/release/compare/v2.0.2...v2.0.3) (2026-11-12)
 
 ### 🐛 Bug Fixes
